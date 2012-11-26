@@ -8,18 +8,18 @@ int main(int argc, char **argv) {
 	DIR *dir;
 	struct dirent *dp;
 	char *c;
-	base_dir = "C:Å_Å_UsersÅ_Å_[xxxx]Å_Å_SoftimageÅ_Å_XSI_7.01";
+	base_dir = "C:\\Users\\[xxxx]\\Softimage\\XSI_7.01";
 	if(NULL == (dir = opendir(base_dir))) {
-		printf("Can not open directory.Å_n->%sÅ_n", base_dir);
+		printf("Can not open directory.\n->%s\n", base_dir);
 		scanf("%c", &c);
 		exit(1);
 	}
 	char tmp_str[256] = {0};
 	strcpy(tmp_str, base_dir);
-	char *d = "Å_Å_";
+	char *d = "\\";
 	char *b_dir;
 	b_dir = strcat(tmp_str, d);
-	//printf("%sÅ_n", b_dir);
+	//printf("%s\n", b_dir);
 	char *r1;
 	char *r2;
 	for(int i = 0; NULL != (dp = readdir(dir)); ++i) {
@@ -29,11 +29,11 @@ int main(int argc, char **argv) {
 			strcpy(tmp, b_dir);
 			strcat(tmp, dp->d_name);
 #ifdef DEVELOPMENT
-			if(tmp != 0) printf("remove successÅF%sÅ_n", tmp);
-			else printf("remove failedÅF%sÅ_n", i, tmp);
+			if(tmp != 0) printf("remove successÅF%s\n", tmp);
+			else printf("remove failedÅF%s\n", i, tmp);
 #else
-			if(remove(tmp) == 0) printf("remove successÅF%sÅ_n", tmp);
-			else printf("remove failedÅF%sÅ_n", i, tmp);
+			if(remove(tmp) == 0) printf("remove successÅF%s\n", tmp);
+			else printf("remove failedÅF%s\n", i, tmp);
 #endif
 		}
 		r2 = strstr(dp->d_name, ".dmp");
@@ -42,11 +42,11 @@ int main(int argc, char **argv) {
 			strcpy(tmp2, b_dir);
 			strcat(tmp2, dp->d_name);
 #ifdef DEVELOPMENT
-			if(tmp2 != 0) printf("remove success:%sÅ_n", tmp2);
-			else printf("remove failed:%sÅ_n", i, tmp2);
+			if(tmp2 != 0) printf("remove success:%s\n", tmp2);
+			else printf("remove failed:%s\n", i, tmp2);
 #else
-			if(remove(tmp2) == 0) printf("remove success:%sÅ_n", tmp2);
-			else printf("remove failed:%sÅ_n", i, tmp2);
+			if(remove(tmp2) == 0) printf("remove success:%s\n", tmp2);
+			else printf("remove failed:%s\n", i, tmp2);
 #endif
 		}
 	}
